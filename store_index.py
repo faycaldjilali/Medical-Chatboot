@@ -18,8 +18,7 @@ embeddings = download_hugging_face_embeddings()
 
 
 #Initializing the Pinecone
-pinecone.init(api_key=PINECONE_API_KEY,
-              environment=PINECONE_API_ENV)
+pinecone = Pinecone(api_key="PINECONE_API_KEY")
 
 
 index_name="medical-bot"

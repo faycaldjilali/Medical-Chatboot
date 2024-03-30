@@ -4,6 +4,7 @@
 from flask import Flask, render_template, jsonify, request
 from src.helper import download_hugging_face_embeddings
 from langchain.vectorstores import Pinecone
+from langchain_community.embeddings import CohereEmbeddings
 import pinecone
 from langchain.prompts import PromptTemplate
 from langchain.llms import CTransformers
@@ -20,11 +21,10 @@ PINECONE_API_KEY = os.environ.get('PINECONE_API_KEY')
 PINECONE_API_ENV = os.environ.get('PINECONE_API_ENV')
 
 
-embeddings = download_hugging_face_embeddings()
+embeddings = coher_embeddings()
 
 #Initializing the Pinecone
-pinecone.init(api_key=PINECONE_API_KEY,
-              environment=PINECONE_API_ENV)
+pinecone = Pinecone(api_key="PINECONE_API_KEY")
 
 index_name="medical-bot"
 
@@ -36,10 +36,7 @@ PROMPT=PromptTemplate(template=prompt_template, input_variables=["context", "que
 
 chain_type_kwargs={"prompt": PROMPT}
 
-llm=CTransformers(model="model/llama-2-7b-chat.ggmlv3.q4_0.bin",
-                  model_type="llama",
-                  config={'max_new_tokens':512,
-                          'temperature':0.8})
+llm=Cohere(cohere_api_key="g27sGmk7ShjkMpYPsd0aPPir6DmaAepeznhzVso6")
 
 
 qa=RetrievalQA.from_chain_type(
