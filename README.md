@@ -1,8 +1,4 @@
 # Medical-Chatboot
-web aplication use llama 2 7b chat model ,langchain ,pincone and flask 
+web aplication use llama 2 7b as a chat model ,the framwork is langchain ,ector database is pincone and i use flask for the front-end
 
-"""bash
-which python3.8
-virtualenv -p /usr/bin/python3.8 mchat
-source mchat/bin/activate
-"""
+
