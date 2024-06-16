@@ -1,4 +1,3 @@
-# Medical-Chatboot
-web aplication use cohere model  as a chat model ,the framwork is langchain ,ector database is pincone and i use flask for the front-end
+This web application utilizes the Cohere model as a chat model. The framework is LangChain, with Pinecone as the vector database, and Flask for the front end.
 
 
